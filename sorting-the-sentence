@@ -1,0 +1,17 @@
+class Solution(object):
+    def sortSentence(self, s):
+        shuffle = s.split(" ")
+        final_sent=""
+        
+        for i in range(len(shuffle)):
+            min_index = i
+            
+            for j in range(i+1, len(shuffle)):
+                if shuffle[j][-1] < shuffle[min_index][-1]:
+                    min_index = j
+            if i != min_index:
+                shuffle[min_index], shuffle[i] = shuffle[i], shuffle[min_index]
+                
+            final_sent += shuffle[i][:-1] + ' '
+            
+        return (final_sent[:-1])
