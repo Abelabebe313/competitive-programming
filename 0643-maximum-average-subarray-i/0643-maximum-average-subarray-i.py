@@ -9,8 +9,9 @@ class Solution:
             if r >= k:
                 count -= nums[l]
                 l += 1
-            avg = count/k
+            
 
             if r >= k - 1:
+                avg = count/k
                 maxSub = max(avg,maxSub)
         return maxSub
