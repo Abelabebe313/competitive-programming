@@ -6,25 +6,15 @@ class Solution:
             if not num % 2:
                 currSum += num
         for querie in queries:
-            if querie[0] % 2 == 0 and nums[querie[1]] %2 == 0:
-                currSum += querie[0]
-                nums[querie[1]] += querie[0]
-                output.append(currSum)
-            elif querie[0] % 2 != 0 and nums[querie[1]] %2 != 0:
-                nums[querie[1]] += querie[0]
-                currSum += nums[querie[1]]
-                output.append(currSum)
-            elif querie[0] % 2 == 0 and nums[querie[1]] %2 != 0:
-                nums[querie[1]] += querie[0]
-                output.append(currSum)
-            elif querie[0] % 2 != 0 and nums[querie[1]] %2 == 0:
+            if nums[querie[1]]%2==0:
                 currSum -= nums[querie[1]]
-                nums[querie[1]] += querie[0]
-                output.append(currSum)
+            nums[querie[1]] += querie[0]
+            
+            if nums[querie[1]]%2==0:
+                currSum += nums[querie[1]]         
+            output.append(currSum)
+        
         return output
-                
-        
-        
         
             
 #         for i in range(len(queries)):
