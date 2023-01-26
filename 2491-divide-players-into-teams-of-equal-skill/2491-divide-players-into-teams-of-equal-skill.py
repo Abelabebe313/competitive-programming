@@ -5,16 +5,14 @@ class Solution:
         teams = []
         left = 0
         right = len(skill)-1
+        target = skill[left] + skill[right]
         while left < right:
-            teams.append((skill[left],skill[right]))
-            left += 1
-            right -= 1
-        target = teams[0][0] + teams[0][1]
-        for i in range(len(teams)):
-            if sum(teams[i]) != target:
+            if target != (skill[left]+skill[right]):
                 return -1
             else:
-                ans += (teams[i][0]*teams[i][1])
-            
+                ans += (skill[left]*skill[right])   
+            left += 1
+            right -= 1
+       
         return ans
             
