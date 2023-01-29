@@ -1,0 +1,12 @@
+order = list(map(int,input().split()))
+n = order[0]
+m = order[1]
+
+nums1 = list(map(int,input().split()))
+nums2 = list(map(int,input().split()))
+j = 0
+
+for i in range(m):
+    while j < n and nums1[j] < nums2[i]:
+        j += 1
+    print(j,end=" ")
