@@ -1,39 +1,22 @@
-t = int(input())
- 
- 
-for _ in range(t):
-    
-	n = int(input())
-	nums = list(map(int,input().split()))
- 
-	res = 0
-	maxNum = float('-inf')
-	flag = "p"
-	if nums[0] > 0:
-		flag = "p"
-		#maxNum = 0
-	else:
-		flag = "n"
-		#maxNum = float('-inf')
-	
-	for i in range(n):
-		if nums[i] > 0:
-			if flag == "p":
-				maxNum =  max(maxNum,nums[i])
-			else:
-				res += maxNum
-				maxNum = float('-inf')
-				maxNum = max(maxNum,nums[i])
-				flag = 'p'
-		else:
-			if flag == "n":
-				maxNum =  max(maxNum,nums[i])
-			else:
-				res += maxNum
-				maxNum = float('-inf')
-				maxNum = max(maxNum,nums[i])
-				flag = "n"
-		#print("found max",maxNum,res,flag)
-	
-	res += maxNum
-	print(res)
+test = int(input())
+for _ in range(test):
+    length = int(input())
+    nums = list(map(int,input().split()))
+
+    left = 0
+    right = 0
+    total = 0
+    while right < length:
+        elem = 0
+        while right < length and nums[right] > 0:
+            elem = max(elem,nums[right])
+            right+=1
+
+        total+=elem
+        elem =float("-inf")
+        while right < length and nums[right] < 0:
+            elem = max(elem,nums[right])
+            right+=1
+        if elem != float("-inf"):
+            total+=(elem)
+    print(total)
