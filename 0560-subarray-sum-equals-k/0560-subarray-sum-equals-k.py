@@ -1,17 +1,22 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        n = len(nums)
-        count = 0
+        l = 0
+        r = 0
         sumDict = {0:1}
+        count = 0
+        prefix = []
         sum = 0
-        
-        for num in nums:
-            sum += num
-            if sum - k in sumDict:
-                count += sumDict[sum-k]
-            if sum in sumDict:
-                sumDict[sum] += 1
+        for i in range(len(nums)):
+            sum += nums[i]
+            prefix.append(sum)
+    
+        for i in range(len(prefix)):
+            if prefix[i] - k in sumDict:
+                count += sumDict[prefix[i] - k]
+            if prefix[i] in sumDict:
+                sumDict[prefix[i]] += 1
             else:
-                sumDict[sum] = 1
+                sumDict[prefix[i]] = 1
         return count
+                
                 
