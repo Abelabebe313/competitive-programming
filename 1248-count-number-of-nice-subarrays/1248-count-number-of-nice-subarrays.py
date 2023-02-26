@@ -2,7 +2,7 @@ class Solution:
     def numberOfSubarrays(self, nums: List[int], k: int) -> int:
         count = 0
         n = len(nums)
-        prefix = [0] * (n+1)
+        prefix = [0] * (n)
         odd = 0
  
         for i in range(n):
