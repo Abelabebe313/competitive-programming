@@ -1,0 +1,24 @@
+class Solution:
+    def subarraysDivByK(self, nums: List[int], k: int) -> int:
+        count = 0
+        prefix = [0]
+        modul = []
+        hash = {}
+        l = 0
+        r = 1
+        for i in range(len(nums)):
+            prefix.append(nums[i] + prefix[i])
+       
+        for i in range(len(prefix)):
+            modul.append(prefix[i]%k)
+        
+        for i in range(len(modul)):
+            if modul[i] in hash:
+                count += hash[modul[i]]
+                hash[modul[i]] += 1
+            else:
+                hash[modul[i]] = 1
+                
+        
+        return count
+        
