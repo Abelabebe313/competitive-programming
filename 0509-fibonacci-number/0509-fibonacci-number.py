@@ -1,5 +1,6 @@
 class Solution:
     def fib(self, n: int) -> int:
+        # with memory
         memo = {}
         def fibonaci(num):
             if num == 0:
