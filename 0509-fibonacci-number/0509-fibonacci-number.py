@@ -1,8 +1,16 @@
 class Solution:
     def fib(self, n: int) -> int:
-        if n == 0:
-            return 0
-        if n == 1:
-            return 1
-        return(self.fib(n-1) + self.fib(n-2))
+        memo = {}
+        def fibonaci(num):
+            if num == 0:
+                return 0
+            if num == 1:
+                return 1
+            if num in memo:
+                return memo[num]
+            memo[num] = fibonaci(num-1) + fibonaci(num-2)
+            return memo[num]
+        
+        return fibonaci(n)
+            
         
