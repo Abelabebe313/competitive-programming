@@ -2,7 +2,6 @@ class Solution:
     def peakIndexInMountainArray(self, arr: List[int]) -> int:
         left = 1
         right = len(arr) - 2
-        mid = 0
         
         while left <= right:
             mid = (left+right)//2
@@ -14,5 +13,3 @@ class Solution:
                 left = mid + 1
             else:
                 right = mid - 1
-        return mid
-        
