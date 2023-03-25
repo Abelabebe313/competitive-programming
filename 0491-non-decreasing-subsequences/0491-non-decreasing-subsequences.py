@@ -17,7 +17,7 @@ class Solution:
                     path.append(nums[i])
                     backtracking(i+1,path)
                     path.pop()
-            return
+            
         backtracking(0,[])
         return result
         
