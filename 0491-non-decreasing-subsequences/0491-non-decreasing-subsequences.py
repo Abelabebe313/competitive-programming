@@ -5,10 +5,12 @@ class Solution:
         
         def backtracking(idx,path):
             nonlocal result
-            if len(path) >= 2:
-                result.add(tuple(path))
-            if idx == len(nums):
+            if idx >= len(nums):
+                if len(path) > 1:
+                    result.add(tuple(path))
                 return
+            if len(path) > 1:
+                result.add(tuple(path))
             
             for i in range(idx,len(nums)):
                 if (not path or path[-1] <= nums[i]):
