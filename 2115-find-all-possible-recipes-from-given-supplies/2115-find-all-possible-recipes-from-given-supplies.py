@@ -12,19 +12,19 @@ class Solution:
         qu = deque([])
         
         for val in supplies:
-            if incomming[val] == 0:
-                qu.append(val)
-        order = []
+            # if incomming[val] == 0:
+            qu.append(val)
+        ans = []
         while qu:
             cur_node = qu.popleft()
             if cur_node in recipes:
-                order.append(cur_node)
+                ans.append(cur_node)
             
             for nbr in graph[cur_node]:
                 incomming[nbr]-=1
                 if incomming[nbr]==0:
                     qu.append(nbr)
-        return order
+        return ans
             
         
     
