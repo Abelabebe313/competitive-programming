@@ -5,11 +5,9 @@ class Solution:
         for idx in range(len(graph)):
             for num in graph[idx]:
                 graph_hash[idx].append(num)
-        print(graph_hash)
+        
         color = [0] * len(graph)
-        # white = 0
-        # gray = 1
-        # black = 2
+        
         ans = []
         def DFS(node):
             if color[node]==1:
