@@ -1,10 +1,10 @@
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
-        graph_hash = defaultdict(list)
+#         graph_hash = defaultdict(list)
         
-        for idx in range(len(graph)):
-            for num in graph[idx]:
-                graph_hash[idx].append(num)
+#         for idx in range(len(graph)):
+#             for num in graph[idx]:
+#                 graph_hash[idx].append(num)
         
         color = [0] * len(graph)
         
@@ -16,7 +16,7 @@ class Solution:
                 return True
            
             color[node] = 1
-            for child in graph_hash[node]:
+            for child in graph[node]:
                 if not DFS(child):
                     return False
             color[node] = 2
