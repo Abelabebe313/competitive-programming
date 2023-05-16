@@ -2,20 +2,29 @@ class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
         graph = defaultdict(list)
         
-        for i in range(len(edges)):
-            graph[edges[i][0]].append(edges[i][1])
-            graph[edges[i][1]].append(edges[i][0])
+        parent = {}
+        rank = [1]  * (n+1)
+        
+        def representative(x):
+            if x not in parent:
+                parent[x] = x
+            elif x != parent[x]:
+                parent[x] = representative(parent[x])
+            return parent[x]
 
-        visited = set()
-        def dfs(vertx , visited):
-            # base case
-            
-            if vertx == destination:
-                return True
-            visited.add(vertx)
-            for neghbor in graph[vertx]:
-                if neghbor not in visited:
-                    found = dfs(neghbor,visited)
-                    if found:
-                        return True
-        return dfs(source,visited)
+        def union(x, y):
+            x_root = representative(x)
+            y_root = representative(y)
+
+            if rank[x_root] > rank[y_root]:
+                parent[x_root] = y_root
+            elif rank[x_root] <= rank[y_root]:
+                parent[y_root] = x_root
+
+        def connected(x, y):
+            return representative(x) == representative(y)
+        
+        for a,b in edges:
+            union(a,b)
+        
+        return connected(source,destination)
