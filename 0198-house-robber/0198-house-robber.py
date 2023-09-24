@@ -3,11 +3,12 @@ class Solution:
         memo = defaultdict()
         
         def dp(i):
-            if i == 0:
-                return nums[i]
-            if i == 1:
-                return max(nums[0],nums[1])
+            if i >= len(nums):
+                return 0
             if i not in memo:
-                memo[i] = max(dp(i-1),dp(i-2) + nums[i])
+                rob = dp(i+2) + nums[i]
+                not_rob = dp(i+1)
+                memo[i] = max(rob,not_rob)
             return memo[i]
-        return dp(len(nums)-1)
+        return dp(0)
+            
