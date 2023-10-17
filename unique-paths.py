@@ -1,16 +1,13 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        memo = {}
-        def inbound(row,col):
-            return (0 <= row < m) and ( 0 <= col < n)
-
-        def dp(row,col):
-            if row == m -1 and col == n - 1:
-                return 1
-            if not inbound(row,col):
-                return 0
-            state = (row,col)
-            if state not in memo:
-                memo[state] = dp(row,col+1) + dp(row+1,col)
-            return memo[state] 
-        return dp(0,0)
+        memo = [[-1] * n for i in range(m) ]
+        
+        for i in range(n):
+            memo[0][i] = 1
+        for j in range(m):
+            memo[j][0] = 1
+             
+        for i in range(1,m):
+            for j in range(1,n):
+                memo[i][j] = memo[i-1][j] + memo[i][j-1]
+        return memo[m-1][n-1]
